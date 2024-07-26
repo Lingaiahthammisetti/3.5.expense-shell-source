@@ -14,7 +14,6 @@ systemctl start mysqld &>>$LOGFILE
 
 mysql_secure_installation --set-root-pass ExpenseApp@1 &>>$LOGFILE
 
-#below code will be useful for idempotent nature
 mysql -h db.lingaiah.online -uroot -p{mysql_root_password} &>>$LOGFILE
 if [$? -ne 0]
 then
