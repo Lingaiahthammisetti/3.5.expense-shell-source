@@ -14,6 +14,7 @@ systemctl start mysqld &>>$LOGFILE
 
 #mysql_secure_installation --set-root-pass ExpenseApp@1 &>>$LOGFILE
 
+#mysql -h db.lingaiah.online -uroot -p${mysql_root_password} -e 'show databases;' &>>$LOGFILE
 mysql -h db.lingaiah.online -uroot -p${mysql_root_password} -e 'show databases;' &>>$LOGFILE
 if [$? -ne 0]
 then
