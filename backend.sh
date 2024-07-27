@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source ./commons.sh
+source ./common.sh
 
 check_root
 
@@ -31,7 +31,7 @@ unzip /tmp/backend.zip &>>$LOGFILE
 
 npm install &>>$LOGFILE
 
-cp /root/expense-shell/backend.service /etc/systemd/system/backend.service &>>$LOGFILE
+cp /root/expense-shell-source/backend.service /etc/systemd/system/backend.service &>>$LOGFILE
 
 systemctl daemon-reload &>>$LOGFILE
 
