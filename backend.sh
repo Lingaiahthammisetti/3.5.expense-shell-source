@@ -31,7 +31,7 @@ unzip /tmp/backend.zip &>>$LOGFILE
 
 npm install &>>$LOGFILE
 
-cp /root/expense-shell-source/backend.service /etc/systemd/system/backend.service &>>$LOGFILE
+cp /root/3.5.expense-shell-source/backend.service /etc/systemd/system/backend.service &>>$LOGFILE
 
 systemctl daemon-reload &>>$LOGFILE
 
@@ -41,7 +41,7 @@ systemctl enable backend &>>$LOGFILE
 
 dnf install mysql -y &>>$LOGFILE
 
-mysql -h db.lingaiah.online -uroot -p${mysql_root_password} < /app/schema/backend.sql &>>$LOGFILE
+mysql -h mysql.lingaiah.online -uroot -p${mysql_root_password} < /app/schema/backend.sql &>>$LOGFILE
 
 systemctl restart backend &>>$LOGFILE
 
