@@ -17,7 +17,7 @@ systemctl start mysqld &>>$LOGFILE
 #mysql -h mysql.lithesh.shop -u root -p${mysql_root_password} -e 'show databases;' &>>$LOGFILE
 
 # Try connecting locally first
-mysql -u root -p"${mysql_root_password}" -e 'show databases;' &>>$LOGFILE
+mysql -u root --password="${mysql_root_password}" -e 'show databases;' &>>$LOGFILE
 if [ $? -ne 0 ]
 then
     mysql_secure_installation --set-root-pass ${mysql_root_password} &>>$LOGFILE
