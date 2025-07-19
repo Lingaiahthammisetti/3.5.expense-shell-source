@@ -16,14 +16,14 @@ mysql_secure_installation --set-root-pass ${mysql_root_password} &>>$LOGFILE
 #Below code will be useful for idempotent nature
 # #mysql -h mysql.lithesh.shop -u root -p${mysql_root_password} -e 'show databases;' &>>$LOGFILE
 
-# # Try connecting locally first
-# mysql -u root --password="${mysql_root_password}" -e 'show databases;' &>>$LOGFILE
-# if [ $? -ne 0 ]
-# then
-#     mysql_secure_installation --set-root-pass ${mysql_root_password} &>>$LOGFILE
-# else
-#     echo -e "MySQL Root password is already setup...$Y SKIPPING $N"
-# fi
+# Try connecting locally first
+mysql -u root --password="${mysql_root_password}" -e 'show databases;' &>>$LOGFILE
+if [ $? -ne 0 ]
+then
+    mysql_secure_installation --set-root-pass ${mysql_root_password} &>>$LOGFILE
+else
+    echo -e "MySQL Root password is already setup...$Y SKIPPING $N"
+fi
 
 systemctl status mysqld &>>$LOGFILE
 
