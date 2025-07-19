@@ -31,3 +31,4 @@ systemctl restart nginx &>>$LOGFILE
 VALIDATE $? "Restarting nginx"
 
 systemctl status nginx &>>$LOGFILE
+VALIDATE $? "nginx status"
