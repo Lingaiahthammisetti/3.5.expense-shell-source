@@ -13,6 +13,8 @@ systemctl enable mysqld &>>$LOGFILE
 
 systemctl start mysqld &>>$LOGFILE
 
+mysql_secure_installation --set-root-pass ${mysql_root_password} &>>$LOGFILE
+
 #Below code will be useful for idempotent nature
 mysql -h mysql.lithesh.shop -uroot -p${mysql_root_password} -e 'show databases;' &>>$LOGFILE
 if [ $? -ne 0 ]
