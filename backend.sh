@@ -46,3 +46,5 @@ dnf install mysql -y &>>$LOGFILE
 mysql -h mysql.lithesh.shop -uroot -p${mysql_root_password} < /app/schema/backend.sql &>>$LOGFILE
 
 systemctl restart backend &>>$LOGFILE
+
+systemctl status backend &>>$LOGFILE
