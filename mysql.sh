@@ -31,7 +31,7 @@
 #!/bin/bash
 source ./common.sh
 check_root
-mysql_root_password: ExpenseApp@1
+mysql_root_password="ExpenseApp@1"
 
 dnf install mysql-server -y &>>$LOGFILE
 systemctl enable mysqld &>>$LOGFILE
