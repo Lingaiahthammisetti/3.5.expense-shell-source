@@ -27,3 +27,6 @@ mysql_secure_installation --set-root-pass ${mysql_root_password} &>>$LOGFILE
 
 systemctl status mysqld &>>$LOGFILE
 
+
+# need to setup password first for MySQL:
+# mysql -h mysql.lithesh.shop -u root -pExpenseApp@1
