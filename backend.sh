@@ -43,8 +43,6 @@ systemctl enable backend &>>$LOGFILE
 
 dnf install mysql -y &>>$LOGFILE
 
-mysql -h mysql.lingaiah.online -uroot -p${mysql_root_password} < /app/schema/backend.sql &>>$LOGFILE
+mysql -h mysql.lithesh.shop -uroot -p${mysql_root_password} < /app/schema/backend.sql &>>$LOGFILE
 
 systemctl restart backend &>>$LOGFILE
-
-
