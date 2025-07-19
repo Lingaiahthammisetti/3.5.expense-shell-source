@@ -1,24 +1,25 @@
 #!/bin/bash
+
 source ./common.sh
 
 check_root
 
+echo "Please enter DB password:"
+read -s mysql_root_password
+
 dnf install mysql-server -y &>>$LOGFILE
-VALIDATE $? "Installation of MYSQL Sever"
 
 systemctl enable mysqld &>>$LOGFILE
-VALIDATE $? "Enabling of MYSQL Server"
 
 systemctl start mysqld &>>$LOGFILE
-VALIDATE $? "Starting the MYSQL Server"
 
-mysql -h mysql.lithesh.shop -u root -pExpenseApp@1 -e 'show databases;' &>>$LOGFILE
+#Below code will be useful for idempotent nature
+mysql -h mysql.lithesh.shop -uroot -p${mysql_root_password} -e 'show databases;' &>>$LOGFILE
 if [ $? -ne 0 ]
 then
-   mysql_secure_installation --set-root-pass ExpenseApp@1 &>>$LOGFILE
+    mysql_secure_installation --set-root-pass ${mysql_root_password} &>>$LOGFILE
 else
-   echo -e "MySQL Root password is already setup..$Y SKIPPING $N"
+    echo -e "MySQL Root password is already setup...$Y SKIPPING $N"
 fi
-
 systemctl status mysqld
 VALIDATE $? "mysql status"
